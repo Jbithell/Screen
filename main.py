@@ -38,8 +38,8 @@ cursor = db.cursor()
 
 def currencyget(base,currency,date):
     time.sleep(0.2) #https://github.com/hakanensari/fixer-io
-    with urllib.request.urlopen("http://api.fixer.io/" + date + "?symbols=" + currency + "&base=" + base).read().decode('utf8') as url:
-        data = json.loads(url)
+    with urllib.request.urlopen("http://api.fixer.io/" + date + "?symbols=" + currency + "&base=" + base) as url:
+        data = json.load(url)
         if len(data['rates']) < 1:
             return False
         else:
@@ -47,6 +47,7 @@ def currencyget(base,currency,date):
 
 def refreshdb():
     global currencies, base
+	
     for currency in currencies:
         if currency == base:
             continue
@@ -65,7 +66,7 @@ def refreshdb():
                 cursor.execute('INSERT INTO data (currency,value,base,day,month,year) VALUES ("' + str(currency) + '","' + str(thisvalue) + '","' + str(base) + '","' + thisdate.strftime("%d") + '","' + thisdate.strftime("%m") + '","' + thisdate.strftime("%Y") + '")')
                 db.commit()
 
-refreshdb()
+#refreshdb()
 
 #Graph setup
 f = plt.figure(figsize=(5, 4), dpi=100)
