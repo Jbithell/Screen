@@ -38,8 +38,8 @@ cursor = db.cursor()
 
 def currencyget(base,currency,date):
     time.sleep(0.2) #https://github.com/hakanensari/fixer-io
-    with urllib.request.urlopen("https://api.fixer.io/" + date + "?symbols=" + currency + "&base=" + base) as url:
-        data = json.load(url)
+    with urllib.request.urlopen("https://api.fixer.io/" + date + "?symbols=" + currency + "&base=" + base).read().decode('utf8') as url:
+        data = json.loads(url)
         if len(data['rates']) < 1:
             return False
         else:
