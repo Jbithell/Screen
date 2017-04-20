@@ -113,7 +113,9 @@ button2.grid(row=1, column=0)
 button3 = Tk.Button(master=root, text='[1] Test', command=sys.exit)
 #button2.pack(side=Tk.LEFT)
 button3.grid(row=0, column=0)
-
+def keydown(e):
+    print('down', e.keysym)
+root.bind("<KeyPress>", keydown)
 
 
 Tk.mainloop()
