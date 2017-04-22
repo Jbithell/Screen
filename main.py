@@ -189,7 +189,7 @@ def updatetube():
     page = urllib.request.urlopen('http://jbithell.com/projects/screen/3/ajax/tubestatus.php')
     tubeshiftmessagestring = str(page.read().decode("utf8")) + "        "
     print("Updating Tube Status")
-    tube.after(5*1*1000, updatetube) #Refresh every 5 minutes
+    tube.after(5*60*1000, updatetube) #Refresh every 5 minutes
 updatetube()
 
 Tk.mainloop()
