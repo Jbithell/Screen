@@ -52,7 +52,7 @@ def currencyget(base,currency,date):
 
 def refreshdb():
     global currencies, base
-    print("Running update")
+    print("Running stock update")
     for currency in currencies:
         if currency == base:
             continue
@@ -177,7 +177,6 @@ tubeshiftmessagestring = ""
 def tubeshif():
     global tubeshiftmessagestring, tubeshiftmessage
     if (len(tubeshiftmessagestring) > 0):
-        print(tubeshiftmessagestring)
         tubeshiftmessagestring =  tubeshiftmessagestring[1:] +  tubeshiftmessagestring[0]
     tubeshiftmessage.set(tubeshiftmessagestring)
     root.after(100, tubeshif)
