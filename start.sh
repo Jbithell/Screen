@@ -1,1 +1,1 @@
-startx -fullscreen  /usr/bin/python3 /usr/src/app/main.py
+startx  -maximized  /usr/bin/python3 /usr/src/app/main.py
