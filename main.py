@@ -30,6 +30,8 @@ def destroy(e):
 
 root = Tk.Tk()
 #root.attributes("-fullscreen", True)
+w, h = root.winfo_screenwidth(), root.winfo_screenheight()
+root.geometry("%dx%d+0+0" % (w, h)) #Try and fill screen
 
 root.columnconfigure(1, weight=1)
 root.rowconfigure(1, weight=1)
