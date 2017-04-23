@@ -12,6 +12,7 @@ import datetime
 from datetime import date, timedelta
 import time
 import sys
+import os #Timezone
 if sys.version_info[0] < 3:
     import Tkinter as Tk
 else:
@@ -20,6 +21,7 @@ else:
 #from yahoo_finance import Currency
 
 #SETTINGS
+os.environ['TZ'] = 'Europe/London'
 currencies = ["USD", "GBP", "EUR"]
 base = "USD"
 #TODO Get these from Resin.io
