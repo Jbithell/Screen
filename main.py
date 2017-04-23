@@ -27,6 +27,8 @@ base = "USD"
 
 def destroy(e):
     sys.exit()
+def create_window():
+    window = Tk.Toplevel(root)
 
 root = Tk.Tk()
 #root.attributes("-fullscreen", True)
@@ -151,6 +153,7 @@ button3 = Tk.Button(master=root, text='[1] Test', command=sys.exit)
 button3.grid(row=0, column=0)
 def keydown(e):
     print('down', e.keysym)
+    create_window()
 root.bind("<KeyPress>", keydown)
 
 
@@ -191,5 +194,7 @@ def updatetube():
     print("Updating Tube Status")
     tube.after(5*60*1000, updatetube) #Refresh every 5 minutes
 updatetube()
+
+
 
 Tk.mainloop()
