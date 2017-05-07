@@ -217,5 +217,7 @@ def checkrfid():
     if status == MIFAREReader.MI_OK:
         print("Card read UID: " + str(uid[0]) + "," + str(uid[1]) + "," + str(uid[2]) + "," + str(uid[3]))
     root.after(1, checkrfid) #Basically a while true
+checkrfid()
+
 
 Tk.mainloop()
