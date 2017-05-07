@@ -40,7 +40,7 @@ RUN cd netdata/ && bash netdata-installer.sh && cd ../
 
 #SPI Install
 RUN git clone https://github.com/lthiery/SPI-Py.git
-RUN python3 setup.py install
+RUN cd SPI-Py/ && python3 setup.py install && cd ../
 
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
