@@ -202,7 +202,10 @@ def updatetube():
 updatetube()
 
 #Setup RFID
-signal.signal(signal.SIGINT, end_read)
+def endrfidread(signal,frame):
+    #This isn't really needed or used - it's just the signal thing fails without it
+    GPIO.cleanup()
+signal.signal(signal.SIGINT, endrfidread)
 MIFAREReader = MFRC522.MFRC522()
 
 def checkrfid():
