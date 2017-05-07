@@ -21,10 +21,10 @@ COPY ./requirements.txt /requirements.txt
 ENV INITSYSTEM on
 
 # Install NetData Monitoring
-#RUN curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh -i netdata-all
-#git clone https://github.com/firehol/netdata.git --depth=1
-#cd netdata
-#./netdata-installer.sh
+#  RUN curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh -i netdata-all
+#  git clone https://github.com/firehol/netdata.git --depth=1
+# cd netdata
+# ./netdata-installer.sh
 
 
 # This will copy all files in our root to the working  directory in the container
