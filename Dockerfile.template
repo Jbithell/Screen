@@ -21,21 +21,21 @@ COPY ./requirements.txt /requirements.txt
 ENV INITSYSTEM on
 
 # Install NetData Monitoring
-RUN curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh -i netdata-all
-git clone https://github.com/firehol/netdata.git --depth=1
-cd netdata
-./netdata-installer.sh
+#RUN curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh -i netdata-all
+#git clone https://github.com/firehol/netdata.git --depth=1
+#cd netdata
+#./netdata-installer.sh
 
 
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
 
 # Set Xorg and FLUXBOX preferences - make sure gui working
-#RUN mkdir ~/.fluxbox
-#RUN echo "xset s off" > ~/.fluxbox/startup && echo "xserver-command=X -s 0 dpms" >> ~/.fluxbox/startup
-#RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
-#  && echo "" >> /etc/X11/xinit/xserverrc \
-#  && echo 'exec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
+RUN mkdir ~/.fluxbox
+RUN echo "xset s off" > ~/.fluxbox/startup && echo "xserver-command=X -s 0 dpms" >> ~/.fluxbox/startup
+RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
+  && echo "" >> /etc/X11/xinit/xserverrc \
+  && echo 'exec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
 
   
 # main.py will run when container starts up on the device
