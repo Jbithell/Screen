@@ -13,6 +13,10 @@ from datetime import date, timedelta
 import time
 import sys
 import os #Timezone
+import RPi.GPIO as GPIO #MFRC522
+import MFRC522 #MFRC522
+import signal #MFRC522
+
 if sys.version_info[0] < 3:
     import Tkinter as Tk
 else:
@@ -197,6 +201,18 @@ def updatetube():
     tube.after(5*60*1000, updatetube) #Refresh every 5 minutes
 updatetube()
 
+#Setup RFID
+signal.signal(signal.SIGINT, end_read)
+MIFAREReader = MFRC522.MFRC522()
 
+def checkrfid():
+    global MIFAREReader
+    (status, TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
+    if status == MIFAREReader.MI_OK:
+        print("Card detected")
+    (status, uid) = MIFAREReader.MFRC522_Anticoll()
+    if status == MIFAREReader.MI_OK:
+        print("Card read UID: " + str(uid[0]) + "," + str(uid[1]) + "," + str(uid[2]) + "," + str(uid[3]))
+    root.after(1, checkrfid) #Basically a while true
 
 Tk.mainloop()
