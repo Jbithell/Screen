@@ -36,7 +36,7 @@ ENV INITSYSTEM on
 # Install NetData Monitoring
 RUN curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh -i netdata-all
 RUN git clone https://github.com/firehol/netdata.git --depth=1
-RUN bash netdata/netdata-installer.sh
+RUN cd netdata/ && bash netdata-installer.sh && cd ../
 
 #SPI Install
 RUN git clone https://github.com/lthiery/SPI-Py.git
