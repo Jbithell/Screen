@@ -188,7 +188,7 @@ def tubeshif():
     if (len(tubeshiftmessagestring) > 0):
         tubeshiftmessagestring =  tubeshiftmessagestring[1:] +  tubeshiftmessagestring[0]
     tubeshiftmessage.set(tubeshiftmessagestring)
-    root.after(100, tubeshif)
+    tubeshiftmessage.after(100, tubeshif)
 tubeshif()
 tube = Tk.Label(root, font=('times', 20, 'bold'), width=100, bg='white', textvariable=tubeshiftmessage)
 tube.grid(row=0, column=1, sticky=Tk.N+Tk.S+Tk.E+Tk.W)
