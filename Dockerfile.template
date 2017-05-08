@@ -35,10 +35,10 @@ WORKDIR /usr/src/app
 ENV INITSYSTEM on
 
 # Install NetData Monitoring
-RUN curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh -i netdata-all
-RUN git clone https://github.com/firehol/netdata.git --depth=1
-RUN rpl "19999" "80" netdata/netdata-installer.sh
-RUN cd netdata/ && bash netdata-installer.sh && cd ../
+#RUN curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh -i netdata-all
+#RUN git clone https://github.com/firehol/netdata.git --depth=1
+#RUN rpl "19999" "80" netdata/netdata-installer.sh
+#RUN cd netdata/ && bash netdata-installer.sh && cd ../
 
 #SPI Install
 RUN git clone https://github.com/lthiery/SPI-Py.git
@@ -48,11 +48,11 @@ RUN cd SPI-Py/ && python3 setup.py install && cd ../
 COPY . ./
 
 # Set Xorg and FLUXBOX preferences - make sure gui working
-#RUN mkdir ~/.fluxbox
-#RUN echo "xset s off" > ~/.fluxbox/startup && echo "xserver-command=X -s 0 dpms" >> ~/.fluxbox/startup
-#RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
-#  && echo "" >> /etc/X11/xinit/xserverrc \
-#  && echo 'exec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
+RUN mkdir ~/.fluxbox
+RUN echo "xset s off" > ~/.fluxbox/startup && echo "xserver-command=X -s 0 dpms" >> ~/.fluxbox/startup
+RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
+  && echo "" >> /etc/X11/xinit/xserverrc \
+  && echo 'exec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
